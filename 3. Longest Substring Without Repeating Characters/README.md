@@ -28,4 +28,9 @@ class Solution {
     }
 }
 ```
+## Notes
+### Syntax
+* `HashMap<Character, Interger>`
+* `containsKey()` don't forget "s"
+* `Math.max`
 
