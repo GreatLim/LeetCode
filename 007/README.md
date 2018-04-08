@@ -43,7 +43,7 @@ class Solution {
     }
 }
 ```
-##Notes
+## Notes
 * How to judge the integer overflow? (From CSAPP)
 
     Try to reverse the operation process and find out whether the result is the same.
