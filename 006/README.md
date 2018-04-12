@@ -47,7 +47,7 @@ class Solution {
     }
 }
 ```
-###Other Solution
+### Other Solution
 ```java
 class Solution {
     public String convert(String s, int numRows) {
