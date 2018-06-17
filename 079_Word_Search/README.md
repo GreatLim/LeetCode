@@ -48,14 +48,11 @@ class Solution {
         this.board = board;
         n = board.length;
         m = board[0].length;
-        boolean existed;
         marked = new boolean[n][m];
-        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if(board[i][j] == word.charAt(0)) {
-                    existed = dfs(i, j, word);
-                    if(existed) return true;
+                if(board[i][j] == word.charAt(0) && dfs(i, j, word)) {
+                    return true;
                 }
             }
         }

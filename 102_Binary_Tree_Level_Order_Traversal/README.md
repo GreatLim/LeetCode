@@ -27,6 +27,71 @@ return its level order traversal as:
 
 ##Solutions
 
+### DFS
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
+        dfs(root, 0, res);
+        return res;
+    }
+    
+    public void dfs(TreeNode root, int depth, List<List<Integer>> res) {
+        if(root == null) return;
+        if(depth == res.size()) res.add(new LinkedList<Integer>());
+        res.get(depth).add(root.val);
+        dfs(root.left, depth + 1, res);
+        dfs(root.right, depth + 1, res);
+    }
+}
+```
+
+### Concise Version (BFS)
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
+        if(root == null) return res;     
+        q.offer(root);
+        while(!q.isEmpty()) {
+            int j = q.size();
+            List<Integer> temp = new LinkedList<Integer>();
+            for(int i = 0; i < j; i++) {
+                TreeNode n = q.poll();
+                if(n.left != null) q.offer(n.left);
+                if(n.right != null) q.offer(n.right);
+                temp.add(n.val);
+            }
+            res.add(temp);
+        }
+        return res;
+    }
+}
+```
+
+
+
 ### First try (BFS)
 
 ```java

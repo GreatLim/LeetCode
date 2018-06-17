@@ -120,9 +120,13 @@ class Solution {
 * you can use index to iterate `List`
 
   `List.get(i)`
-*  while and if, sometimes they can combine
+
+* while and if, sometimes they can combine
+
+
 
 
 ## Todo
 
 * make it consice
+* interval tree
