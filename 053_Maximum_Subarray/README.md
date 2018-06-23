@@ -20,6 +20,8 @@ If you have figured out the O(*n*) solution, try coding another solution using t
 
 ## Solution
 
+### Kadane's Algorithm
+
 ```java
 class Solution {
     public int maxSubArray(int[] nums) {
@@ -37,6 +39,13 @@ class Solution {
 
 
 ## Notes
+
+* `maxhere` 确保包括 `nums[i]` 的子序列是最大的
+
+  * 如果 `maxHere` 为正， `nums[i]` 为正，`maxHere = maxHere + nums[i]`
+  * 如果 `maxHere` 为正， `nums[i]` 为负，`maxHere = maxHere + nums[i]`
+  * 如果 `maxHere` 为负， `nums[i]` 为正，`maxHere = nums[i]`
+  * 如果 `maxHere` 为负， `nums[i]` 为负，`maxHere = nums[i]`
 
 * this problem was discussed by Jon Bentley (Sep. 1984 Vol. 27 No. 9 Communications of the ACM P885)
 
