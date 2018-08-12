@@ -25,6 +25,8 @@ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the le
 
 ### Binary Search
 
+#### Concise Version
+
 ```java
 class Solution {
     public int lengthOfLIS(int[] nums) {
@@ -46,6 +48,35 @@ class Solution {
     }
 }
 ```
+
+#### Template Version
+
+```java
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        if(nums.length == 0 || nums == null) return 0;
+        int n = nums.length, size = 0;
+        int[] tails = new int[n];
+        Arrays.fill(tails, Integer.MIN_VALUE);
+        for(int num : nums) {
+            int lo = 0, hi = size;
+            while(lo + 1 < hi) {
+                int mid = lo + (hi - lo) / 2;
+                if(tails[mid] <= num) lo = mid;
+                else hi = mid;
+            }
+            if(num <= tails[lo]) tails[lo] = num;
+            else {
+                tails[hi] = num;
+                if(hi == size) size++;
+            }
+        }
+        return size;
+    }
+}
+```
+
+
 
 ### O(N^2)
 

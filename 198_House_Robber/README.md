@@ -33,14 +33,13 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 ```java
 class Solution {
     public int rob(int[] nums) {
-        int preNo = 0;
-        int preYes = 0;
-        for(int i : nums) {
-            int temp = preYes;
-            preYes = preNo + i;
-            preNo = Math.max(preNo, temp);
+        int curYes = 0, curNo = 0;
+        for(int num : nums) {
+            int preYes = curYes, preNo = curNo;
+            curYes = preNo + num;
+            curNo = Math.max(preYes, preNo);
         }
-        return Math.max(preNo, preYes);
+        return Math.max(curYes, curNo);
     }
 }
 ```
@@ -62,21 +61,4 @@ class Solution {
 }
 ```
 
-
-
-### Other
-
-```java
-class Solution {
-    public int rob(int[] nums) {
-        int sum0 = 0;
-        int sum1 = 0;
-        for(int i = 0; i < nums.length; i++) {
-            if(i % 2 == 0) sum0 = Math.max(sum0 + i, sum1);
-            else sum1 = Math.max(sum1 + i, sum0);
-        }
-        return Math.max(sum1, sum0);
-    }
-}
-```
 

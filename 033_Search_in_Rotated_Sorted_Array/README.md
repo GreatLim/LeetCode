@@ -29,21 +29,26 @@ Output: -1
 ```java
 class Solution {
     public int search(int[] nums, int target) {
-        int start = 0;
-        int end = nums.length - 1;
-        while(start <= end) {
-            int mid = (start + end) / 2;
-            if(target == nums[mid]) return mid;
-            else if(target < nums[mid]) {
-                if(target < nums[start] && nums[start] <= nums[mid]) start = mid + 1;
-                else end = mid - 1;
-            }
-            else {
-                if(target > nums[end] && nums[mid] <= nums[end]) end = mid - 1;
-                else start = mid + 1;
-            }
+        int lo = 0, hi = nums.length - 1;
+        int rot = findMinIndex(nums);
+        while(lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            int real = (mid + rot) % nums.length;
+            if(nums[real] == target) return real;
+            else if(nums[real] > target) hi = mid - 1;
+            else lo = mid + 1;
         }
         return -1;
+    }
+    
+    public int findMinIndex(int[] nums) {
+        int lo = 0, hi = nums.length - 1;
+        while(lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if(nums[mid] > nums[hi]) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
     }
 }
 ```
