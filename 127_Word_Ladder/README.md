@@ -66,6 +66,7 @@ class Solution {
                         String s2 = new String(chars);
                         if(dict.contains(s2)) {
                             if(!visited.contains(s2)) q.offer(s2);
+                            dict.remove(s2);
                             if(s2.equals(endWord)) return level + 1;
                         }
                     }
@@ -78,3 +79,6 @@ class Solution {
 }
 ```
 
+## Note
+
+* `dict.remove(s2);` 可以大大优化时间

@@ -14,6 +14,17 @@ Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
 ```
 
+
+
+## Crack
+
+* 由于数据之间没有连续，所以不考虑DP，可以用HashMap
+* 遍历数组
+  * 测试当前左右两边的数是否在HashMap中，获得目前包含有这两个数的最长连续数列的长度
+  * 更新这串数列的最左和最右端HashMap中的长度
+
+
+
 ## Solution
 
 ```java

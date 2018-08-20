@@ -21,7 +21,31 @@ The minimum path sum from top to bottom is `11` (i.e., **2** + **3** + **5** + *
 
 Bonus point if you are able to do this using only *O*(*n*) extra space, where *n* is the total number of rows in the triangle.
 
+## Crack
+
+* from bottom to top
+
 ## Solution
+
+### Concise Version
+
+```java
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        int[] dp = new int[n + 1];
+        for(int i = n - 1; i >= 0; i--) {
+            List<Integer> list = triangle.get(i);
+            for(int j = 0; j < list.size(); j++) {
+                dp[j] = Math.min(dp[j], dp[j + 1]) + list.get(j);
+            }
+        }
+        return dp[0];
+    }  
+}
+```
+
+
 
 ### First Try
 
