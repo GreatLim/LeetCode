@@ -100,10 +100,6 @@ class LRUCache {
             this.val = val;
             this.key = key;
         }
-        
-        public String toString() {
-            return "" + val;
-        }
     }
 }
 
